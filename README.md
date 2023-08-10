@@ -35,19 +35,19 @@ optional arguments:
   -c, --compile         compile program (default=False)
 ```
 
+### Unix-like
+```python3 $lt/lt.py -p bar.cpp -c```\
+For simplicity, setup an environment variable for your local-test directory.
+
+```bash
+echo "export VARIABLE_NAME=value" >> ~/.bash_profile
+```
+
 ### Windows
 ```python %lt%\lt.py -p bar.cpp -c```\
 Unless local-test directory is an environment variable ("lt"), replace "%lt%\lt.py" with its pathname.
 
 Environment Variables > System variables > New
-
-### Unix-like
-```python3 $LT/lt.py -p bar.cpp -c```\
-You'll probably also want to setup an environment variable for your local-test directory.
-
-```bash
-echo "export VARIABLE_NAME=value" >> ~/.bash_profile
-```
 
 ### Writing test cases
 
@@ -91,15 +91,10 @@ BTW check out similar testing program written in bash shell ([link](https://exam
 
 ## Configuration - ```config.json```
 
-### Decyphering what the author meant
-
-[] - value must be one of the options provided\
-() - literally anything
-
 > **WARNING**
 > Specified compiler will be run in shell.
 
-### Keys
+### Valid key options
 
 (not actual JSON below)
 
