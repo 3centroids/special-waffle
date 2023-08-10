@@ -5,21 +5,17 @@ Aims to use only standard library.
 
 ## Platform support
 
-Unix-like (e.g. macOS, Linux) uses bash and Windows uses cmd.
+Unix-like (e.g. macOS, Linux) uses bash and Windows uses Command Prompt.
 
 | platform | Unix-like | Windows |
 |:---:|:---:|:---:|
 | support | :heavy_check_mark: | :heavy_check_mark: |
 | shell | bash | cmd |
 
-> **NOTE**
-> Colorful output may not work on Windows Command Prompt (but it does in Visual Studio Code and Windows Terminal).
-
 ## Usage
 
 It's recommended to add local-test directory to PATH.
 
-```python lt.py -h```
 ```
 usage: lt.py [-h] -p PROGRAM [-c]
 
@@ -30,8 +26,15 @@ optional arguments:
   -c, --compile         compile program (default=False)
 ```
 
-Example usage: ```python lt.py -p bar.cpp -c```\
-Unless local-test directory is added to PATH, replace "lt.py" with its pathname. On Unix-like systems do ```python3``` instead of ```python``` in the above command.
+### Windows
+```python %lt%\lt.py -p bar.cpp -c```\
+Unless local-test directory is an environment variable ("lt"), replace "%lt%\lt.py" with its pathname.
+System Properties > Environment Variables > System variables > New
+
+### Unix-like
+```python3 $LT/lt.py -p bar.cpp -c```\
+You'll probably also want to setup an environment variable for your local-test directory.
+In bash type ```export VARIABLE_NAME=value``` with proper VARIABLE_NAME and value.
 
 ### Writing test cases
 
@@ -85,9 +88,11 @@ BTW check out similar testing program written in bash shell ([link](https://exam
 
 ### Keys
 
-"platform": ["Unix", "Windows"]\
-"compiler": ("clang++", "clang", "g++", "gcc", etc.)\
+```json
+"platform": ["Unix", "Windows"]
+"compiler": ("clang++", "clang", "g++", "gcc", etc.)
 "generator-prefix": ("gen", "g", etc.)
+```
 
 ## TODO
 
