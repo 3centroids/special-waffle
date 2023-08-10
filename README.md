@@ -1,6 +1,6 @@
 # local-test
 
-Portable local testing software and test case generator written in Python for competitive programming in C++.
+Portable local testing software (and test case generator TODO: implement this) written in Python for competitive programming in C++.
 Aims to use only standard library.
 
 ## Platform support
@@ -29,12 +29,16 @@ optional arguments:
 ### Windows
 ```python %lt%\lt.py -p bar.cpp -c```\
 Unless local-test directory is an environment variable ("lt"), replace "%lt%\lt.py" with its pathname.
-System Properties > Environment Variables > System variables > New
+
+Environment Variables > System variables > New
 
 ### Unix-like
 ```python3 $LT/lt.py -p bar.cpp -c```\
 You'll probably also want to setup an environment variable for your local-test directory.
-In bash type ```export VARIABLE_NAME=value``` with proper VARIABLE_NAME and value.
+
+```bash
+export VARIABLE_NAME=value
+```
 
 ### Writing test cases
 
@@ -84,14 +88,16 @@ BTW check out similar testing program written in bash shell ([link](https://exam
 () - literally anything
 
 > **WARNING**
-> Specified compiler will be used in shell.
+> Specified compiler will be run in shell.
 
 ### Keys
 
+(not actual JSON below)
+
 ```json
 "platform": ["Unix", "Windows"]
-"compiler": ("clang++", "clang", "g++", "gcc", etc.)
-"generator-prefix": ("gen", "g", etc.)
+"compiler": ["clang++", "clang", "g++", "gcc", "etc."]
+"generator-prefix": ["gen", "g", "etc."]
 ```
 
 ## TODO
