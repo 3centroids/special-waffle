@@ -37,7 +37,7 @@ Environment Variables > System variables > New
 You'll probably also want to setup an environment variable for your local-test directory.
 
 ```bash
-export VARIABLE_NAME=value
+echo "export VARIABLE_NAME=value" >> ~/.bash_profile
 ```
 
 ### Writing test cases
