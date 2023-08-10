@@ -12,8 +12,8 @@ Unix-like (e.g. macOS, Linux) uses bash and Windows uses cmd.
 | support | :heavy_check_mark: | :heavy_check_mark: |
 | shell | bash | cmd |
 
-**NOTE**
-Colorful output may not work on Windows Command Prompt (but it does in Visual Studio Code and Windows Terminal).
+> **NOTE**
+> Colorful output may not work on Windows Command Prompt (but it does in Visual Studio Code and Windows Terminal).
 
 ## Usage
 
@@ -35,8 +35,8 @@ Unless local-test directory is added to PATH, replace "lt.py" with its pathname.
 
 ### Writing test cases
 
-**IMPORTANT**
-Make sure to have matching newlines, otherwise correct output might flag your program as defective. Example below.
+> **IMPORTANT**
+> Make sure to have matching newlines, otherwise correct output might flag your program as defective. Example below.
 
 ```bar.cpp```
 ```cpp
@@ -80,8 +80,8 @@ BTW check out similar testing program written in bash shell ([link](https://exam
 [] - value must be one of the options provided\
 () - literally anything
 
-**WARNING**
-Specified compiler will be used in shell.
+> **WARNING**
+> Specified compiler will be used in shell.
 
 ### Keys
 
