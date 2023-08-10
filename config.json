@@ -1,0 +1,5 @@
+{
+    "compiler": "g++",
+    "platform": "Windows",
+    "generator-prefix": "gen"
+}
