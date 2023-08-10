@@ -1,7 +1,7 @@
 # local-test
 
 Portable local testing software (and test case generator TODO: implement this) written in Python for competitive programming in C++.
-Aims to use only standard library.
+Limits itself to Python's standard library.
 
 ## Platform support
 
@@ -14,8 +14,17 @@ Unix-like (e.g. macOS, Linux) uses bash and Windows uses Command Prompt.
 
 ## Usage
 
-It's recommended to add local-test directory to PATH.
+example folder structure
+```
+.
+└── foo/
+    ├── bar-tests/
+    │   ├── 0.in
+    │   └── 0.out
+    └── bar.cpp
+```
 
+output generated with ```-h```
 ```
 usage: lt.py [-h] -p PROGRAM [-c]
 
