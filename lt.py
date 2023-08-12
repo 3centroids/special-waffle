@@ -1,5 +1,3 @@
-# TEST2
-
 from argparse import ArgumentParser
 from pathlib import Path
 from typing import Type
@@ -57,7 +55,7 @@ def main():
         program = str(Path(program).with_suffix(""))
 
     # JSON settings
-    with open(lt_workspace/"config.json", "r") as config_file:
+    with open(lt_workspace / "config.json", "r") as config_file:
         config_data = load(config_file)
 
         compiler: str = config_data["compiler"]
@@ -67,7 +65,7 @@ def main():
     if platform == "Windows":
         executable: str = program + ".exe"
     elif platform == "Unix":
-        executable: str = "./" + program
+        executable: str = program
 
     # Exit before errors can occur
     if not SchemeJSON.is_valid(platform, SchemeJSON.platform_options):
@@ -82,42 +80,40 @@ def main():
         run([compiler, program + ".cpp", "-o", program], shell=True)
 
     # Compare program output with expected results
-    outputs = Queue()
+    output_queue = Queue()
     counter = 0
     mx = 0
 
     for x in Path(program + "-tests").iterdir():
         if x.suffix == ".in":
-            run([executable, "<", str(x), ">", "lt.txt"], shell=True)
+            run([executable], stdin=x.open("r"), stdout=(lt_workspace / "lt.txt").open("w"))
 
-            if cmp(str(x.with_suffix(".out")), "lt.txt"):
+            if cmp(str(x.with_suffix(".out")), lt_workspace / "lt.txt"):
                 ok(str(x.stem) + ": OK")
                 counter += 1
             else:
                 err(str(x.stem) + ": WA")
-                output = []
-                output.append(str(x.stem))
-                with open(str(x.with_suffix(".out")), "r") as f:
-                    output.append(f.read())
-                with open("lt.txt", "r") as f:
-                    output.append(f.read())
-                outputs.put(output)
+                output_str = str(x.stem) + "\n"
+                with open(x.with_suffix(".out"), "r") as f:
+                    output_str += "expected:\n" + f.read() + "\n"
+                with open(lt_workspace / "lt.txt", "r") as f:
+                    output_str += "program output:\n" + f.read()
+                output_queue.put(output_str)
+            # open(lt_workspace / "lt.txt", "w").close() # clear temporary file
             mx += 1
     
     # Print wrong program output
     print("\nwrong outputs")
     print("-------------")
-    while not outputs.empty():
-        y: list = outputs.get()
+    while not output_queue.empty():
+        y: list = output_queue.get()
         
         # y contains 3 strings
         # this is safe
         # trust me, bro
-        cprint(f"***** {y[0]} *****", Color.magenta)
-        print("expected:")
-        print(y[1])
-        print("program output:")
-        print(y[2])
+        cprint("*****", Color.magenta)
+        print(y)
+        cprint("*****", Color.magenta)
     print("-------------\n")
 
     # Print results
@@ -127,4 +123,5 @@ def main():
         err(str(counter) + "/" + str(mx))
 
 
-main()
+if __name__ == "__main__":
+    main()
