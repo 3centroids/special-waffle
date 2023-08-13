@@ -65,7 +65,7 @@ def main():
     if platform == "Windows":
         executable: str = program + ".exe"
     elif platform == "Unix":
-        executable: str = "./" + program
+        executable: str = program
 
     # Exit before errors can occur
     if not SchemeJSON.is_valid(platform, SchemeJSON.platform_options):
@@ -86,7 +86,7 @@ def main():
 
     for x in Path(program + "-tests").iterdir():
         if x.suffix == ".in":
-            run([executable, "<", str(x), ">", lt_workspace / "lt.txt"], shell=True)
+            run([executable], stdin=x.open("r"), stdout=(lt_workspace / "lt.txt").open("w"))
 
             if cmp(str(x.with_suffix(".out")), lt_workspace / "lt.txt"):
                 ok(str(x.stem) + ": OK")
