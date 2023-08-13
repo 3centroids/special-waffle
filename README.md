@@ -1,16 +1,18 @@
+> **NOTE**
+> In the following days this will get archived and rewritten in bash (Linux, macOS) and possibly batch (Windows).
+
 # local-test
 
 Portable local testing software (and test case generator TODO: implement this) written in Python for competitive programming in C++.
-Limits itself to Python's standard library.
 
 ## Platform support
 
 Unix-like (e.g. macOS, Linux) uses bash and Windows uses Command Prompt.
 
-| platform | Unix-like | Windows |
-|:---:|:---:|:---:|
-| support | :heavy_check_mark: | :heavy_check_mark: |
-| shell | bash | cmd |
+| platform | Unix-like | Windows | WSL2 |
+|:---:|:---:|:---:|:---:|
+| support | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| shell | bash | cmd | bash |
 
 ## Usage
 
@@ -84,10 +86,12 @@ int main() {
 
 ^ Newline present
 
+<strike>
 ## Why Python?
 
 [SIO2](https://github.com/sio2project) (used by [POI](https://oi.edu.pl) ([POI's SIO2 link](https://sio2.mimuw.edu.pl/))) itself is partially written in Python. Honestly, I found joy writing Python for a change.
 BTW check out similar testing program written in bash shell ([link](https://example.com)).
+</strike>
 
 ## Configuration - ```config.json```
 
