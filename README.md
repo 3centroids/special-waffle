@@ -1,5 +1,5 @@
 > **NOTE**
-> In the following days this will get archived and rewritten in bash (Linux, macOS) and possibly batch (Windows).
+> Due to portability issues, the repository is going to be archived. A simpler version written in `bash` is [here](https://github.com/3centroids/glowing-carnival)!
 
 # local-test
 
